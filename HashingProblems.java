@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Joel Mesa / 400 01 ***
  *
  * This HashingProblems object contains three methods / problems that you must
  * complete utilize the HashMap object within the Java's Collection Framework Library.
@@ -32,17 +32,18 @@ class HashingProblems {
      */
 
     public double getAverage(HashMap<Integer, Integer> map, int[] array) {
+        int sum = 0;
+        int count = 0;
 
-        /*
-         * ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOU NAME AT TOP OF FILE
-         *
-         * Note: if NO values found in common between the HashMap and supplied array,
-         * returning 0.0 is NOT correct, as that is not the average value. Whereas
-         * returning 0.0/0.0 IS correct (which would return a non-number).
-         */
+        for (int key : array) {
+            if (map.containsKey(key)) {
+                sum += map.get(key);
+                count++;
+            }
+        }
 
-         return 0.0 / 0.0;
-  }
+        return count == 0 ? Double.NaN : (double) sum / count;
+    }
 
 
     /*
@@ -53,18 +54,16 @@ class HashingProblems {
      */
 
   public ArrayList<String> odd(HashMap<Integer, String> map) {
-    
-      ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
 
-      /*
-       * ADD YOUR CODE HERE
-       *
-       * Hint: Consider iterating over the HashMap using the keySet method.
-       */
+        for (Integer key : map.keySet()) {
+            if (key % 2 != 0) {
+                result.add(map.get(key));
+            }
+        }
 
-
-      return result;
-  }
+        return result;
+    }
 
 
   /*
@@ -104,13 +103,20 @@ class HashingProblems {
    * NOTE: Solving using a HashMap or HashSet is fine (either is okay). HashSet may be easier to code?
    */
 
-  public int twoSums(int[] numbers, int k) {
+public int twoSums(int[] numbers, int k) {
+        Set<Integer> numSet = new HashSet<>();
+        int count = 0;
 
-      /*
-       * ADD YOUR CODE HERE
-       */
+        for (int num : numbers) {
+            numSet.add(num);
+        }
 
-      return -1;
-  }
+        for (int num : numbers) {
+            if (numSet.contains(num + k)) {
+                count++;
+            }
+        }
 
-} /* end class HashingProblems */
+        return count;
+    }
+}/* end class HashingProblems */
