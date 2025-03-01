@@ -337,10 +337,4 @@ class myHashMap<K, V> {
         }
         return returnSet;
     }
-}
-
-
-        return returnSet;
-    }
-
 } /* end class myHashMap */
